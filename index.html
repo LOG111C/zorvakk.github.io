@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZorvaKK - Gaming Streamer</title>
+    <meta name="description" content="Epic gaming streams, amazing community, and unforgettable moments. Join the adventure!">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <div class="nav-logo">
+                    <i class="fas fa-gamepad"></i>
+                </div>
+                <span class="nav-title">ZorvaKK Website</span>
+            </div>
+
+            <div class="nav-menu" id="navMenu">
+                <a href="#home" class="nav-link" data-en="Home" data-hu="Főoldal">Home</a>
+                <a href="#about" class="nav-link" data-en="About" data-hu="Rólam">About</a>
+                <a href="#schedule" class="nav-link" data-en="Schedule" data-hu="Menetrend">Schedule</a>
+                <a href="#setup" class="nav-link" data-en="Setup" data-hu="Felszerelés">Setup</a>
+                <a href="#contact" class="nav-link" data-en="Contact" data-hu="Kapcsolat">Contact</a>
+            </div>
+
+            <div class="nav-actions">
+                <!-- Language Switcher -->
+<div class="language-switcher">
+    <button class="lang-btn active" onclick="setLanguage('en')">
+        <span class="flag"><img src="eng.png" alt="English flag"></span>
+        <span class="lang-code">EN</span>
+    </button>
+    <button class="lang-btn" onclick="setLanguage('hu')">
+        <span class="flag"><img src="hu.png" alt="Hungarian flag"></span>
+        <span class="lang-code">HU</span>
+    </button>
+</div>
+
+
+                <!-- Live Status -->
+                <div class="live-status" id="liveStatus" style="display: none;">
+                    <div class="live-dot" id="liveDot"></div>
+                    <div class="live-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <span class="live-text" id="liveText">OFFLINE</span>
+                </div>
+
+                <button class="follow-btn" data-en="Follow" data-hu="Követés">Follow</button>
+            </div>
+
+            <div class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-bg">
+            <div class="hero-gradient"></div>
+            <div class="floating-orb orb-1"></div>
+            <div class="floating-orb orb-2"></div>
+        </div>
+
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1 class="hero-title">
+                        <span class="gradient-text" data-en="ZorvaKK's" data-hu="ZorvaKK">ZorvaKK's</span>
+                        <br>
+                        <span class="white-text" data-en="Gaming Hub" data-hu="Gaming Központ">Gaming Hub</span>
+                    </h1>
+                    <p class="hero-description" data-en="Join me for epic gaming adventures, pro tips, and an amazing community. Streaming daily with the best gameplay and entertainment!" data-hu="Csatlakozz hozzám epikus gaming kalandokhoz, profi tippekhez és egy fantasztikus közösséghez. Napi streamelés a legjobb játékélménnyel!">
+                        Join me for epic gaming adventures, pro tips, and an amazing community. Streaming daily with the best gameplay and entertainment!
+                    </p>
+
+                    <div class="hero-stats">
+                        <div class="stat">
+                            <i class="fas fa-eye"></i>
+                            <span class="stat-number" id="viewerCount">0</span>
+                            <span class="stat-label" data-en="viewers" data-hu="néző">viewers</span>
+                        </div>
+                        <div class="stat">
+                            <i class="fas fa-users"></i>
+                            <span class="stat-number" id="followerCount">0</span>
+                            <span class="stat-label" data-en="followers" data-hu="követő">followers</span>
+                        </div>
+                    </div>
+
+                    <div class="hero-buttons">
+                        <a href="https://www.twitch.tv/zorvakk_" class="btn btn-primary">
+                            <i class="fas fa-play"></i>
+                            <span data-en="Watch Live" data-hu="Élő Nézés">Watch Live</span>
+                        </a>
+                        <button class="btn btn-secondary">
+                            <i class="fas fa-heart"></i>
+                            <span data-en="Support(ontwitch)" data-hu="Támogatás(ontwitch)">Support</span>
+                        </button>
+                    </div>
+
+                    <div class="social-links">
+                        <a href="https://www.twitch.tv/zorvakk_" class="social-link twitch">
+                            <i class="fab fa-twitch"></i>
+                        </a>
+                        <a href="#" class="social-link youtube">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                        <a href="#" class="social-link twitter">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="social-link instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://discord.gg/6DEjBZjN2u" class="social-link discord">
+                            <i class="fab fa-discord"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="hero-video">
+                    <div class="video-container">
+                        <img src="https://via.placeholder.com/600x400/1a1a1a/ffffff?text=Live+Stream" alt="Live Stream" class="stream-preview">
+                        <div class="live-badge" id="heroBadge" style="display: none;">
+                            <div class="live-dot"></div>
+                            <span>LIVE</span>
+                        </div>
+                        <div class="stream-info" id="streamInfo" style="display: none;">
+                            <p class="stream-title" id="streamTitle">Currently Offline</p>
+                            <p class="stream-subtitle" id="streamGame">Not streaming</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title gradient-text" data-en="About Me" data-hu="Rólam">About Me</h2>
+                <p class="section-subtitle" data-en="Professional gamer and content creator with over 5 years of streaming experience" data-hu="Professzionális gamer és tartalomkészítő több mint 5 év streaming tapasztalattal">
+                    Professional gamer and content creator with over 5 years of streaming experience
+                </p>
+            </div>
+
+            <div class="about-content">
+                <div class="about-text">
+                    <h3 class="about-greeting" data-en="Hey, I'm ZorvaKK!" data-hu="Szia, ZorvaKK vagyok!">Hey, I'm ZorvaKK!</h3>
+                    <p class="about-description" data-en="Welcome to my gaming universe! I'm ZorvaKK, a passionate gamer who loves sharing epic moments, teaching strategies, and building an amazing community. Join me on Twitch for incredible gaming sessions!" data-hu="Üdvözöllek a gaming univerzumomban! ZorvaKK vagyok, egy szenvedélyes gamer, aki szeret epikus pillanatokat megosztani, stratégiákat tanítani és fantasztikus közösséget építeni. Csatlakozz hozzám a Twitch-en hihetetlen gaming sessionökre!">
+                        Welcome to my gaming universe! I'm ZorvaKK, a passionate gamer who loves sharing epic moments, teaching strategies, and building an amazing community. Join me on Twitch for incredible gaming sessions!
+                    </p>
+                    <p class="about-description" data-en="When I'm not streaming, you'll find me exploring new games, working on my setup, or hanging out with the community on Discord. Let's game together!" data-hu="Amikor nem streamelok, új játékokat fedezek fel, a felszerelésemen dolgozom, vagy a közösséggel lógok a Discord-on. Gameljünk együtt!">
+                        When I'm not streaming, you'll find me exploring new games, working on my setup, or hanging out with the community on Discord. Let's game together!
+                    </p>
+
+                    <div class="stats-grid">
+                        <div class="stat-card purple">
+                            <div class="stat-number">3+</div>
+                            <div class="stat-label" data-en="Years Streaming" data-hu="Év Streaming">Years Streaming</div>
+                        </div>
+                        <div class="stat-card pink">
+                            <div class="stat-number">100k</div>
+                            <div class="stat-label" data-en="Total Views" data-hu="Összes Nézettség">Total Views</div>
+                        </div>
+                        <div class="stat-card blue">
+                            <div class="stat-number">50+</div>
+                            <div class="stat-label" data-en="Games Played" data-hu="Játszott Játékok">Games Played</div>
+                        </div>
+                        <div class="stat-card green">
+                            <div class="stat-number" id="aboutFollowerCount">0</div>
+                            <div class="stat-label" data-en="Followers" data-hu="Követők">Followers</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="about-image">
+                    <img src="zorvakk.png" alt="ZorvaKK Profile" class="profile-image">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Schedule Section -->
+    <section id="schedule" class="schedule">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title gradient-text" data-en="Stream Schedule" data-hu="Stream Menetrend">Stream Schedule</h2>
+                <p class="section-subtitle" data-en="Catch me live at these times (EST)" data-hu="Nézz élőben ezekben az időpontokban (EST)">
+                    Catch me live at these times (EST)
+                </p>
+            </div>
+
+            <div class="schedule-grid">
+                <div class="schedule-card">
+                    <div class="schedule-header">
+                        <h3 class="schedule-day">Monday</h3>
+                        <span class="live-badge small">LIVE</span>
+                    </div>
+                    <div class="schedule-time">
+                        <i class="fas fa-clock"></i>
+                        <span>Számítás alatt</span>
+                    </div>
+                    <p class="schedule-game">Stream</p>
+                </div>
+
+                <div class="schedule-card">
+                    <div class="schedule-header">
+                        <h3 class="schedule-day">Tuesday</h3>
+                    </div>
+                    <div class="schedule-time">
+                        <i class="fas fa-clock"></i>
+                        <span>Számítás alatt</span>
+                    </div>
+                    <p class="schedule-game">Stream</p>
+                </div>
+
+                <div class="schedule-card">
+                    <div class="schedule-header">
+                        <h3 class="schedule-day">Wednesday</h3>
+                    </div>
+                    <div class="schedule-time">
+                        <i class="fas fa-clock"></i>
+                        <span>Számítás alatt</span>
+                    </div>
+                    <p class="schedule-game">Stream</p>
+                </div>
+
+                <div class="schedule-card">
+                    <div class="schedule-header">
+                        <h3 class="schedule-day">Thursday</h3>
+                    </div>
+                    <div class="schedule-time">
+                        <i class="fas fa-clock"></i>
+                        <span>Számítás alatt</span>
+                    </div>
+                    <p class="schedule-game">Stream</p>
+                </div>
+
+                <div class="schedule-card">
+                    <div class="schedule-header">
+                        <h3 class="schedule-day">Friday</h3>
+                    </div>
+                    <div class="schedule-time">
+                        <i class="fas fa-clock"></i>
+                        <span>Számítás alatt</span>
+                    </div>
+                    <p class="schedule-game">Stream</p>
+                </div>
+
+                <div class="schedule-card">
+                    <div class="schedule-header">
+                        <h3 class="schedule-day">Saturday</h3>
+                    </div>
+                    <div class="schedule-time">
+                        <i class="fas fa-clock"></i>
+                        <span>Számítás alatt</span>
+                    </div>
+                    <p class="schedule-game">Stream</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Gaming Setup Section -->
+    <section id="setup" class="setup">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title gradient-text" data-en="Gaming Setup" data-hu="Gaming Felszerelés">Gaming Setup</h2>
+                <p class="section-subtitle" data-en="The gear that powers my streams" data-hu="A felszerelés, ami hajtja a streamjeimet">
+                    The gear that powers my streams
+                </p>
+            </div>
+
+            <div class="setup-grid">
+                <div class="setup-card">
+                    <div class="setup-icon">
+                        <i class="fas fa-desktop"></i>
+                    </div>
+                    <h3 class="setup-category">PC</h3>
+                    <ul class="setup-list">
+                        <li><i class="fas fa-star"></i> RTX 2060</li>
+                        <li><i class="fas fa-star"></i> Intel i5-10400F</li>
+                        <li><i class="fas fa-star"></i> 16GB DDR4</li>
+                        <li><i class="fas fa-star"></i> 1TB Samsung Evo SSD</li>
+                    </ul>
+                </div>
+
+                <div class="setup-card">
+                    <div class="setup-icon">
+                        <i class="fas fa-headphones"></i>
+                    </div>
+                    <h3 class="setup-category">Audio</h3>
+                    <ul class="setup-list">
+                        <li><i class="fas fa-star"></i> gWings GW959HS</li>
+                        <li><i class="fas fa-star"></i> Random Noname Temu Microphone</li>
+                    </ul>
+                </div>
+
+                <div class="setup-card">
+                    <div class="setup-icon">
+                        <i class="fas fa-keyboard"></i>
+                    </div>
+                    <h3 class="setup-category">Peripherals</h3>
+                    <ul class="setup-list">
+                        <li><i class="fas fa-star"></i> iSY IGM 4500 BK</li>
+                        <li><i class="fas fa-star"></i> Spider GW9160KB</li>
+                    </ul>
+                </div>
+
+                <div class="setup-card">
+                    <div class="setup-icon">
+                        <i class="fas fa-mouse"></i>
+                    </div>
+                    <h3 class="setup-category">Streaming</h3>
+                    <ul class="setup-list">
+                        <li><i class="fas fa-star"></i> Iriun Webcam</li>
+                        <li><i class="fas fa-star"></i> My s$$t mobile</li>
+                        <li><i class="fas fa-star"></i> Streamlabs</li>
+                        <li><i class="fas fa-star"></i> Tripple Monitors</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="setup-banner">
+    <img src="setup.png" alt="Setup Banner Image">
+</div>
+
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title gradient-text" data-en="Get In Touch" data-hu="Vedd Fel a Kapcsolatot">Get In Touch</h2>
+                <p class="section-subtitle" data-en="Business inquiries, collaborations, or just want to say hi?" data-hu="Üzleti megkeresések, együttműködések, vagy csak köszönni szeretnél?">
+                    Business inquiries, collaborations, or just want to say hi?
+                </p>
+            </div>
+
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon purple">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3 data-en="Email" data-hu="Email">Email</h3>
+                            <p>ggbuffon77@gmail.com</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-icon pink">
+                            <i class="fab fa-discord"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3 data-en="Discord Server" data-hu="Discord Szerver">Discord Server</h3>
+                            <p>https://discord.gg/6DEjBZjN2u</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-icon blue">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3 data-en="Location" data-hu="Helyszín">Location</h3>
+                            <p>Pécs</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-icon green">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3 data-en="Business Phone" data-hu="Üzleti Telefon">Phone</h3>
+                            <p>Private sorr</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-social">
+                        <h3 data-en="Follow Me" data-hu="Kövess">Follow Me</h3>
+                        <div class="social-grid">
+                            <a href="https://www.twitch.tv/zorvakk_" class="social-btn twitch">
+                                <i class="fab fa-twitch"></i>
+                            </a>
+                            <a href="https://www.youtube.com/channel/UC8Z7Vhwsaeoi8gUqEW3cxZw" class="social-btn youtube">
+                                <i class="fab fa-youtube"></i>
+                            <a href="https://discord.gg/CpDgMyRJSd" class="social-btn discord">
+                                <i class="fab fa-discord"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-form-container">
+                    <div class="contact-form-card">
+                        <h3 data-en="Send a Message" data-hu="Üzenet Küldése">Send a Message</h3>
+                        <p data-en="I'll get back to you as soon as possible!(NOT WORKING. Coming SOON!!)" data-hu="A lehető leghamarabb válaszolok!( NEM MÜKÖDŐKÉPES MÉG!!)">I'll get back to you as soon as possible!</p>
+                        
+                        <form class="contact-form" id="contactForm">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label data-en="First Name" data-hu="Keresztnév">First Name</label>
+                                    <input type="text" name="firstName" placeholder="John" required>
+                                </div>
+                                <div class="form-group">
+                                    <label data-en="Last Name" data-hu="Vezetéknév">Last Name</label>
+                                    <input type="text" name="lastName" placeholder="Doe" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label data-en="Subject" data-hu="Tárgy">Subject</label>
+                                <input type="text" name="subject" placeholder="Business Inquiry" required>
+                            </div>
+                            <div class="form-group">
+                                <label data-en="Message" data-hu="Üzenet">Message</label>
+                                <textarea name="message" rows="5" placeholder="Tell me about your project or collaboration idea..." required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary full-width">
+                                <span data-en="Send Message" data-hu="Üzenet Küldése">Send Message</span>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <div class="nav-logo">
+                            <i class="fas fa-gamepad"></i>
+                        </div>
+                        <span class="nav-title">ZorvaKK Website</span>
+                    </div>
+                    <p data-en="Epic gaming streams, amazing community, and unforgettable moments. Join the adventure!" data-hu="Epikus gaming streamek, fantasztikus közösség és felejthetetlen pillanatok. Csatlakozz a kalandhoz!">
+                        Epic gaming streams, amazing community, and unforgettable moments. Join the adventure!
+                    </p>
+                </div>
+
+                <div class="footer-links">
+                    <h4 data-en="Quick Links" data-hu="Gyors Linkek">Quick Links</h4>
+                    <ul>
+                        <li><a href="#home" data-en="Home" data-hu="Főoldal">Home</a></li>
+                        <li><a href="#about" data-en="About" data-hu="Rólam">About</a></li>
+                        <li><a href="#schedule" data-en="Schedule" data-hu="Menetrend">Schedule</a></li>
+
+                    </ul>
+                </div>
+
+                <div class="footer-links">
+                    <h4 data-en="Games" data-hu="Játékok">Games</h4>
+                    <ul>
+                        <li>Rocket League</li>
+                        <li>Seemta V4</li>
+                        <li>Sok más</li>
+                    </ul>
+                </div>
+
+                <div class="footer-links">
+                    <h4 data-en="Support" data-hu="Támogatás">Support</h4>
+                    <ul>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p data-en="© 2024 ZorvaKK Website. All rights reserved." data-hu="© 2024 ZorvaKK Website. Minden jog fenntartva.">
+                    © 2024 ZorvaKK Website. All rights reserved.
+                </p>
+                <div class="footer-legal">
+                    <a href="#" data-en="Privacy Policy" data-hu="Adatvédelmi Irányelvek">Privacy Policy</a>
+                    <a href="#" data-en="Terms of Service" data-hu="Felhasználási Feltételek">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
